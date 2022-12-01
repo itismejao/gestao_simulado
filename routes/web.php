@@ -46,4 +46,6 @@ Route::delete('/prova', [App\Http\Controllers\ProvaController::class, 'destroy']
 Route::get('/planilha', [App\Http\Controllers\PlanilhaController::class, 'index'])->name('planilha');
 Route::post('/planilha', [App\Http\Controllers\PlanilhaController::class, 'processarPlanilha']);
 
+Route::get('/gerador', [App\Http\Controllers\GeradorController::class, 'index'])->name('gerador');
+
 

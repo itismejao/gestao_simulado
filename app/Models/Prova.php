@@ -15,4 +15,9 @@ class Prova extends Model
 
     protected $fillable = ['nome', 'data_aplicacao'];
 
+    public function participanteProva()
+    {
+        return $this->hasMany(ParticipanteProva::class, 'prova_id', 'prova_id');
+    }
+
 }

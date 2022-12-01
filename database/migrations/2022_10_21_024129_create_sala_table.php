@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('sala', function (Blueprint $table) {
             $table->id($column = 'sala_id');
             $table->string('nome');
+            $table->string('setor')->nullable();
             $table->integer('capacidade')->default(30);
             $table->timestamps();
         });

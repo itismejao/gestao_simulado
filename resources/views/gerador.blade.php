@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Carregar planilha') }}</div>
+                <div class="card-header">{{ __('Gerador de lugares') }}</div>
 
                 <div class="card-body">
 
@@ -36,7 +36,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('planilha') }}"  enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('gerador') }}"  enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-0">
@@ -49,12 +49,9 @@
 
                             <div class="col-md-6 offset-md-3" >
 
-                                <select id="prova_id" class="form-control @error('prova_id') is-invalid @enderror" name="prova_id" required autocomplete="prova_id">
-                                    <option disabled selected value> -- Selecione uma opção -- </option>
-                                    @foreach($provas as $prova)
-                                        <option value={{$prova->prova_id}}>{{$prova->nome}}</option>
-                                    @endforeach
-                                </select>
+                                {{-- {{ dd($provas[0]->participanteProva); }} --}}
+
+                                <gerador :provas="{{ $provas }}"></gerador>
 
                                 @error('prova_id')
                                     <span class="invalid-feedback" role="alert">
@@ -88,33 +85,6 @@
                         </div>
                     </div>
                     </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<br>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <div class="row mb-3">
-                        <label for="arquivo" class="col-md-4 col-form-label text-md-end">{{ __('Selecione o arquivo') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="arquivo" type="file" class="form-control" name="arquivo" required>
-                        </div>
-                    </div>
 
                 </div>
             </div>

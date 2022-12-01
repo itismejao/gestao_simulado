@@ -8,6 +8,7 @@ use App\Models\Curso;
 use App\Models\Participante;
 use App\Models\ParticipanteProva;
 use App\Models\Planilha;
+use App\Models\Prova;
 use App\Models\Turma;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,13 @@ class PlanilhaController extends Controller
 
     public function index(Request $request)
     {
+        $planilhas = Planilha::all();
+
+        $planilha = Planilha::find($request->input('planilha_id'));
+
+        $provas = Prova::all();
+
+        return view('form.planilha', compact('planilhas','planilha','provas'));
     }
 
     public function processarPlanilha(Request $request)

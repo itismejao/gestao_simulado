@@ -57,6 +57,9 @@
                                 {{-- <input id="curso_id" type="text" class="form-control @error('curso_id') is-invalid @enderror" name="curso_id" value="{{ old('curso_id') }}" required autocomplete="curso_id" autofocus> --}}
 
                                 <select id="curso_id" class="form-control @error('curso_id') is-invalid @enderror" name="curso_id" required autocomplete="curso_id">
+
+                                    <option disabled selected value> -- Selecione uma opção -- </option>
+
                                     @if (isset($turma))
                                         <option value={{$turma->curso->curso_id}} selected>{{$turma->curso->nome}}</option>
                                     @endif

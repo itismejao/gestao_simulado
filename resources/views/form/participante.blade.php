@@ -51,12 +51,15 @@
 
                             <div class="col-md-6">
                                 <select id="turma_id" class="form-control @error('turma_id') is-invalid @enderror" name="turma_id" required autocomplete="turma_id">
+
+                                    <option disabled selected value> -- Selecione uma opção -- </option>
+
                                     @if (isset($participante))
-                                        <option value={{$participante->turma->turma_id}} selected>{{$participante->turma->nome_turma}}</option>
+                                        <option value={{$participante->turma->turma_id}} selected>{{$participante->turma->ano.'° '.$participante->turma->nome_turma." - ".$participante->turma->curso->nome}}</option>
                                     @endif
 
                                     @foreach($turmas as $turma)
-                                        <option value={{$turma->turma_id}}>{{$turma->ano.'° '.$turma->nome_turma}}</option>
+                                        <option value={{$turma->turma_id}}>{{$turma->ano.'° '.$turma->nome_turma." - ".$turma->curso->nome}}</option>
                                     @endforeach
                                 </select>
 
@@ -115,6 +118,7 @@
                       <td>Matrícula</td>
                       <td>Nome</td>
                       <td>Turma</td>
+                      <td>Curso</td>
                       <td>Atualizado em</td>
                       <td colspan = 2>Ações</td>
                     </tr>
@@ -126,6 +130,7 @@
                         <td>{{$participante->matricula}} </td>
                         <td>{{$participante->nome}} </td>
                         <td>{{$participante->turma->ano.'° '.$participante->turma->nome_turma}} </td>
+                        <td>{{$participante->turma->curso->nome}} </td>
                         <td>{{$participante->updated_at->format('d/m/o')}}</td>
                         <td>
                             <a href="{{ route('participante',['participante_id' => $participante->participante_id])}}" class="btn btn-primary">Alterar</a>

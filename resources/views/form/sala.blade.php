@@ -62,6 +62,20 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="setor" class="col-md-4 col-form-label text-md-end">{{ __('Setor') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="setor" type="text" class="form-control @error('setor') is-invalid @enderror" name="setor" value="{{ isset($sala) ? $sala->setor : old('setor') }}" required autocomplete="setor" autofocus>
+
+                                @error('setor')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="capacidade" class="col-md-4 col-form-label text-md-end">{{ __('Capacidade') }}</label>
 
                             <div class="col-md-6">
@@ -92,6 +106,7 @@
                     <tr>
                       <td>ID</td>
                       <td>Nome</td>
+                      <td>Setor</td>
                       <td>Capacidade</td>
                       <td>Atualizado em</td>
                       <td colspan = 2>Ações</td>
@@ -102,6 +117,7 @@
                     <tr>
                         <td>{{$sala->sala_id}}</td>
                         <td>{{$sala->nome}} </td>
+                        <td>{{$sala->setor}} </td>
                         <td>{{$sala->capacidade}} </td>
                         <td>{{$sala->updated_at->format('d/m/o')}}</td>
                         <td>
