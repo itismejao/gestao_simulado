@@ -13,6 +13,6 @@ class Sala extends Model
 
     protected $primaryKey = 'sala_id';
 
-    protected $fillable = ['nome', 'capacidade','setor'];
+    protected $fillable = ['nome', 'capacidade','setor','fileiras'];
 
 }

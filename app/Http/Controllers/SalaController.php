@@ -32,7 +32,8 @@ class SalaController extends Controller
         $sala = new Sala([
             'nome' => $request->get('nome'),
             'capacidade' => $request->get('capacidade'),
-            'setor' => $request->get('setor')
+            'setor' => $request->get('setor'),
+            'fileiras' => $request->get('fileiras')
         ]);
 
         $sala->save();
@@ -59,6 +60,7 @@ class SalaController extends Controller
         $sala->nome = $request->get('nome');
         $sala->capacidade = $request->get('capacidade');
         $sala->setor = $request->get('setor');
+        $sala->fileiras = $request->get('fileiras');
 
         $sala->save();
 

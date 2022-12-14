@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('prova_id')->references('prova_id')->on('prova');
             $table->foreignId('participante_id')->references('participante_id')->on('participante');
+            $table->foreignId('sala_id')->nullable()->references('sala_id')->on('sala');
+            $table->string('posicao')->nullable();
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::get('/curso', [App\Http\Controllers\CursoController::class, 'index'])->name('curso');
 Route::post('/curso', [App\Http\Controllers\CursoController::class, 'store']);
@@ -47,5 +47,13 @@ Route::get('/planilha', [App\Http\Controllers\PlanilhaController::class, 'index'
 Route::post('/planilha', [App\Http\Controllers\PlanilhaController::class, 'processarPlanilha']);
 
 Route::get('/gerador', [App\Http\Controllers\GeradorController::class, 'index'])->name('gerador');
+Route::post('/gerador', [App\Http\Controllers\GeradorController::class, 'processarLugares']);
+
+Route::get('/visualizador', [App\Http\Controllers\GeradorController::class, 'visualizarLugares'])->name('visualizador');
+Route::post('/visualizador', [App\Http\Controllers\GeradorController::class, 'buscarSalas']);
+
+Route::get('/carregar-planilha', [App\Http\Controllers\PlanilhaController::class, 'carregarPlanilha'])->name('carregar-planilha');
+
+
 
 

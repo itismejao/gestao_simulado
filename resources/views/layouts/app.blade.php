@@ -10,11 +10,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -54,7 +57,15 @@
                         @else
 
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('carregar-planilha') }}">{{ __('Carregar planilha') }}</a>
+                            </li>
+                            
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('gerador') }}">{{ __('Gerador') }}</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('visualizador') }}">{{ __('Visualizador') }}</a>
                             </li>
                             
                             <li class="nav-item dropdown">

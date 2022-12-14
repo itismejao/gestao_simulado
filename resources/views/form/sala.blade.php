@@ -89,6 +89,20 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="fileiras" class="col-md-4 col-form-label text-md-end">{{ __('Fileiras') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="fileiras" type="text" class="form-control @error('fileiras') is-invalid @enderror" name="fileiras" value="{{ isset($sala) ? $sala->fileiras : old('fileiras') }}" required autocomplete="fileiras" autofocus>
+
+                                @error('fileiras')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -108,6 +122,7 @@
                       <td>Nome</td>
                       <td>Setor</td>
                       <td>Capacidade</td>
+                      <td>Fileiras</td>
                       <td>Atualizado em</td>
                       <td colspan = 2>Ações</td>
                     </tr>
@@ -119,6 +134,7 @@
                         <td>{{$sala->nome}} </td>
                         <td>{{$sala->setor}} </td>
                         <td>{{$sala->capacidade}} </td>
+                        <td>{{$sala->fileiras}} </td>
                         <td>{{$sala->updated_at->format('d/m/o')}}</td>
                         <td>
                             <a href="{{ route('sala',['sala_id' => $sala->sala_id])}}" class="btn btn-primary">Alterar</a>

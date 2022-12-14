@@ -15,11 +15,12 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
-
 import Gerador from './components/Gerador.vue';
 app.component('gerador', Gerador);
+
+import Visualizador from './components/Visualizador.vue';
+app.component('visualizador', Visualizador);
+
 
 /**
  * The following block of code may be used to automatically register your

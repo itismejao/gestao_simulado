@@ -31,6 +31,13 @@ class PlanilhaController extends Controller
         return view('form.planilha', compact('planilhas','planilha','provas'));
     }
 
+    public function carregarPlanilha()
+    {
+        $provas = Prova::all();
+
+        return view('carregarplanilha',  compact('provas'));
+    }
+
     public function processarPlanilha(Request $request)
     {
 

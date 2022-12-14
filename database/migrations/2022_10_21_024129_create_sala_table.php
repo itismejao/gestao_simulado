@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('setor')->nullable();
             $table->integer('capacidade')->default(30);
+            $table->integer('fileiras')->nullable();
             $table->timestamps();
         });
     }

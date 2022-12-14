@@ -11,7 +11,7 @@ class ParticipanteProva extends Model
 
     protected $table = 'participante_prova';
 
-    protected $fillable = ['prova_id', 'participante_id'];
+    protected $fillable = ['prova_id', 'participante_id','sala_id','posicao'];
 
     public function prova()
     {
@@ -21,5 +21,10 @@ class ParticipanteProva extends Model
     public function participante()
     {
         return $this->belongsTo(Participante::class, 'participante_id', 'participante_id');
+    }
+
+    public function sala()
+    {
+        return $this->belongsTo(Sala::class, 'sala_id', 'sala_id');
     }
 }

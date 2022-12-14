@@ -24,8 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $provas = Prova::all();
-
-        return view('home',  compact('provas'));
+        return view('home');
     }
 }
