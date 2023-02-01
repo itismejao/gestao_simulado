@@ -54,6 +54,14 @@ Route::post('/visualizador', [App\Http\Controllers\GeradorController::class, 'bu
 
 Route::get('/carregar-planilha', [App\Http\Controllers\PlanilhaController::class, 'carregarPlanilha'])->name('carregar-planilha');
 
+Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index'])->name('usuario');
+Route::post('/usuario', [App\Http\Controllers\UsuarioController::class, 'store']);
+Route::put('/usuario', [App\Http\Controllers\UsuarioController::class, 'update']);
+Route::delete('/usuario', [App\Http\Controllers\UsuarioController::class, 'destroy']);
 
 
 
+Route::prefix('report')->group(function() {
+    Route::get('redacao', [App\Http\Controllers\RelatorioController::class, 'redacao'])->name('redacao');
+    Route::post('redacao', [App\Http\Controllers\RelatorioController::class, 'processarredacao'])->name('processarredacao');
+});

@@ -29,7 +29,7 @@ class GeradorController extends Controller
     {
         $provas = Prova::with('participanteProva')->get();
 
-        $salas = Sala::all();
+        $salas = Sala::orderBy('nome', 'ASC')->get();
 
         return view('gerador',  ['provas' => $provas, 'salas' => $salas]);
     }

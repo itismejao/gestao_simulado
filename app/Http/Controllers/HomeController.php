@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Prova;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $provas = Prova::whereDate('data_aplicacao', '>', Carbon::today()->toDateString())->orderBy('data_aplicacao', 'ASC')->take(3)->get();
+
+        return view('home', compact('provas'));
     }
 }

@@ -15,7 +15,7 @@ class SalaController extends Controller
     public function index(Request $request)
     {
 
-        $salas = Sala::all();
+        $salas = Sala::orderBy('nome', 'ASC')->get();
 
         $sala = Sala::find($request->input('sala_id'));
 
@@ -70,10 +70,19 @@ class SalaController extends Controller
 
     public function destroy(Request $request) {
 
-        $sala = Sala::find($request->input('sala_id'));
+        try {
 
-        $sala->delete();
- 
-        return redirect('/sala')->with('success', 'Sala removida!');
+            $sala = Sala::find($request->input('sala_id'));
+
+            $sala->delete();
+     
+            return redirect('/sala')->with('success', 'Sala removida!');
+
+        } catch (\Throwable $th) {
+
+            return redirect('/sala')->with('error', 'Sala não pode ser removida!');
+
+        }
+
     }
 }

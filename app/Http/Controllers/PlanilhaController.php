@@ -228,9 +228,9 @@ class PlanilhaController extends Controller
             $planilha->success = true;
             $planilha->save();
 
-            return redirect('/home')->with('success', 'Planilha importada com sucesso!');
+            return redirect('/carregar-planilha')->with('success', 'Planilha importada com sucesso!');
         } catch (\Throwable $th) {
-            return redirect('/home')->with('error', $th->getMessage());
+            return redirect('/carregar-planilha')->with('error', $th->getMessage());
         }
     }
 }

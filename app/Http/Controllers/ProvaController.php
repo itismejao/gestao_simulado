@@ -15,7 +15,7 @@ class ProvaController extends Controller
     public function index(Request $request)
     {
 
-        $provas = Prova::all();
+        $provas = Prova::orderBy('data_aplicacao', 'ASC')->get();
 
         $prova = Prova::find($request->input('prova_id'));
 

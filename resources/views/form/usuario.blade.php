@@ -5,9 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Sala') }}</div>
+                <div class="card-header">{{ __('Cadastrar Usuário') }}</div>
 
                 <div class="card-body">
+
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -17,10 +18,6 @@
                     @if(session()->get('success'))
                         <div class="alert alert-success">
                         {{ session()->get('success') }}  
-                        </div>
-                    @elseif(session()->get('error'))
-                        <div class="alert alert-danger">
-                        {{ session()->get('error') }}  
                         </div>
                     @endif
 
@@ -34,30 +31,16 @@
                         </div>
                     @endif
 
-
-                    <form method="POST" action="{{ route('sala') }}">
-
-                    @if (isset($sala))
-                        @method('PUT')
-                    @endif
-                    
+                    <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="sala_id" class="col-md-4 col-form-label text-md-end">{{ __('ID') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nome') }}</label>
 
                             <div class="col-md-6">
-                                <input id="sala_id" type="text" class="form-control" name="sala_id" value="{{ isset($sala) ? $sala->sala_id : null }}" readonly>
-                            </div>
-                        </div>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                        <div class="row mb-3">
-                            <label for="nome" class="col-md-4 col-form-label text-md-end">{{ __('Nome') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ isset($sala) ? $sala->nome : old('nome') }}" required autocomplete="nome" autofocus>
-
-                                @error('nome')
+                                @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -66,12 +49,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="setor" class="col-md-4 col-form-label text-md-end">{{ __('Setor') }}</label>
+                            <label for="cpf" class="col-md-4 col-form-label text-md-end">{{ __('Cpf') }}</label>
 
                             <div class="col-md-6">
-                                <input id="setor" type="text" class="form-control @error('setor') is-invalid @enderror" name="setor" value="{{ isset($sala) ? $sala->setor : old('setor') }}" required autocomplete="setor" autofocus>
+                                <input id="name" type="text" class="form-control @error('cpf') is-invalid @enderror" name="cpf" value="{{ old('cpf') }}" required autocomplete="cpf" autofocus>
 
-                                @error('setor')
+                                @error('cpf')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -80,12 +63,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="capacidade" class="col-md-4 col-form-label text-md-end">{{ __('Capacidade') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
 
                             <div class="col-md-6">
-                                <input id="capacidade" type="text" class="form-control @error('capacidade') is-invalid @enderror" name="capacidade" value="{{ isset($sala) ? $sala->capacidade : old('capacidade') }}" required autocomplete="capacidade" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                @error('capacidade')
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -94,23 +77,47 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="fileiras" class="col-md-4 col-form-label text-md-end">{{ __('Fileiras') }}</label>
+                            <label for="tipo_acesso" class="col-md-4 col-form-label text-md-end">{{ __('Tipo de Acesso') }}</label>
 
                             <div class="col-md-6">
-                                <input id="fileiras" type="text" class="form-control @error('fileiras') is-invalid @enderror" name="fileiras" value="{{ isset($sala) ? $sala->fileiras : old('fileiras') }}" required autocomplete="fileiras" autofocus>
+                                <select id="tipo_acesso" class="form-control @error('tipo_acesso') is-invalid @enderror" name="tipo_acesso" required autocomplete="tipo_acesso">
+                                    <option value=1 selected>Administrador</option>
+                                </select>
 
-                                @error('fileiras')
+                                @error('tipo_acesso')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Senha') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm a Senha') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ isset($sala) ? __('Salvar') : __('Cadastrar') }}
+                                    {{ __('Cadastrar') }}
                                 </button>
                             </div>
                         </div>
@@ -124,27 +131,27 @@
                     <tr>
                       <td>ID</td>
                       <td>Nome</td>
-                      <td>Setor</td>
-                      <td>Capacidade</td>
-                      <td>Fileiras</td>
+                      <td>CPF</td>
+                      <td>Email</td>
+                      <td>Tipo de Acesso</td>
                       <td>Atualizado em</td>
                       <td colspan = 2>Ações</td>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($salas as $sala)
+                    @foreach($usuarios as $usuario)
                     <tr>
-                        <td>{{$sala->sala_id}}</td>
-                        <td>{{$sala->nome}} </td>
-                        <td>{{$sala->setor}} </td>
-                        <td>{{$sala->capacidade}} </td>
-                        <td>{{$sala->fileiras}} </td>
-                        <td>{{$sala->updated_at->format('d/m/o')}}</td>
+                        <td>{{$usuario->usuario_id}}</td>
+                        <td>{{$usuario->nome}} </td>
+                        <td>{{$usuario->cpf}} </td>
+                        <td>{{$usuario->email}} </td>
+                        <td>{{$usuario->tipo_acesso_id}} </td>
+                        <td>{{$usuario->updated_at->format('d/m/o')}}</td>
                         <td>
-                            <a href="{{ route('sala',['sala_id' => $sala->sala_id])}}" class="btn btn-primary">Alterar</a>
+                            <a href="{{ route('usuario',['usuario_id' => $usuario->usuario_id])}}" class="btn btn-primary">Alterar</a>
                         </td>
                         <td>
-                            <form action="{{ route('sala', ['sala_id' => $sala->sala_id])}}" method="post" onsubmit="return confirm('Deseja realmente excluir a sala {{$sala->nome}}?');">
+                            <form action="{{ route('usuario', ['usuario_id' => $usuario->usuario_id])}}" method="post" onsubmit="return confirm('Deseja realmente excluir o usuario {{$usuario->nome}}?');">
                               @csrf
                               @method('DELETE')
                               <button class="btn btn-danger" type="submit">Excluir</button>
